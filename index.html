@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Era Mesozoica | Explorando o Passado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+    <header>
+        <div class="container header-content">
+            <h1>Mesozoica<span>Era</span></h1>
+            <nav aria-label="Navegação Principal">
+                <ul class="nav-links">
+                    <li><a href="#periodos">Períodos</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#curiosidades">Curiosidades</a></li>
+                </ul>
+            </nav>
+            <div class="accessibility-controls" role="group" aria-label="Controles de Acessibilidade">
+                <button id="contrast-toggle" aria-label="Alternar Alto Contraste">◐</button>
+                <button id="font-decrease" aria-label="Diminuir Fonte">A-</button>
+                <button id="font-increase" aria-label="Aumentar Fonte">A+</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero scroll-reveal">
+            <div class="container">
+                <h2>A Idade dos Répteis</h2>
+                <p>Descubra o mundo dominado pelos dinossauros, desde o Triássico até a grande extinção no Cretáceo.</p>
+            </div>
+        </section>
+
+        <section id="periodos" class="section container scroll-reveal">
+            <h2>Os Três Períodos</h2>
+            <div id="periods-grid" class="grid-layout">
+                </div>
+        </section>
+
+        <section id="galeria" class="section container scroll-reveal">
+            <h2>Gigantes Mesozoicos</h2>
+            <div class="carousel" role="region" aria-label="Carrossel de Dinossauros">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track" id="carousel-list">
+                        </ul>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" aria-label="Anterior">❮</button>
+                    <button class="carousel-btn next" aria-label="Próximo">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="curiosidades" class="section container scroll-reveal">
+            <h2>Curiosidades Frequentes</h2>
+            <div id="faq-accordion" class="accordion">
+                </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Portal Paleontológico. Desenvolvido com foco em acessibilidade.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
