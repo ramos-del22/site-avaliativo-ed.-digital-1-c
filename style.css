@@ -1,120 +1,109 @@
+/* =========================================
+   SISTEMA DE DESIGN (VARIÁVEIS)
+   ========================================= */
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #e67e22;
-    --bg-color: #ffffff;
-    --text-color: #333;
-    --card-bg: #f9f9f9;
+    --primary: #4a7c44; /* Verde Floresta */
+    --primary-dark: #2d5a27;
+    --secondary: #e67e22; /* Laranja Terra */
+    --dark: #121212;
+    --light-bg: #f9f7f2;
+    --text-main: #2c3e50;
+    --text-muted: #5d6d7e;
+    --white: #ffffff;
+    --radius: 16px;
+    --font-base: 16px;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-body.dark-mode {
-    --primary-color: #1a1a1a;
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --card-bg: #1e1e1e;
+/* ALTO CONTRASTE */
+body.high-contrast {
+    --primary: #ffff00;
+    --secondary: #00ffff;
+    --dark: #000;
+    --light-bg: #000;
+    --text-main: #fff;
+    --text-muted: #fff;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background 0.3s, color 0.3s;
+/* =========================================
+   BASE & TIPOGRAFIA
+   ========================================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--font-base); scroll-behavior: smooth; }
+body { 
+    font-family: 'Inter', system-ui, sans-serif; 
+    background: var(--light-bg); 
+    color: var(--text-main);
+    overflow-x: hidden;
 }
 
-header {
-    background: var(--primary-color);
-    color: white;
-    padding: 1rem 5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 50px; }
+.section-header h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--primary-dark); }
 
-#navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
+/* HERO SECTION */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200');
-    background-size: cover;
-    height: 60vh;
+    height: 90vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    background: url('https://images.unsplash.com/photo-1517921466422-861844516a7d?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+    position: relative;
     color: white;
 }
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), transparent);
+}
+.hero-body { position: relative; z-index: 2; max-width: 600px; }
+.badge { background: var(--secondary); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; }
+.hero h2 { font-size: 3.5rem; line-height: 1.1; margin: 20px 0; }
 
-.grid-container {
+/* =========================================
+   CARDS & GRID
+   ========================================= */
+.grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem 5%;
+    gap: 30px;
 }
-
 .card {
-    background: var(--card-bg);
-    border-radius: 10px;
+    background: var(--white);
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding-bottom: 1rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+.card:hover { transform: translateY(-10px); }
+.card-img { width: 100%; height: 200px; object-fit: cover; }
+.card-content { padding: 25px; }
+
+/* =========================================
+   CARROSSEL MELHORADO
+   ========================================= */
+.dark-bg { background: var(--dark); color: white; }
+.dark-bg .section-header h2 { color: var(--secondary); }
+
+.carousel-item {
+    min-width: 100%;
+    position: relative;
+    height: 500px;
+}
+.carousel-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+.carousel-caption {
+    position: absolute; bottom: 50px; left: 50px;
 }
 
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+/* =========================================
+   ACESSÍVEL: ACORDEÃO
+   ========================================= */
+.accordion-item { background: var(--white); margin-bottom: 10px; border-radius: 8px; }
+.accordion-header {
+    width: 100%; padding: 20px; border: none; background: none;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; font-size: 1.1rem; font-weight: 600; text-align: left;
 }
 
-.card h3, .card p, .card ul { padding: 0 1rem; margin-top: 1rem; }
-
-.section-title { text-align: center; margin: 2rem 0; font-size: 2.5rem; }
-
-.btn-primary {
-    background: var(--accent-color);
-    color: white;
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    display: inline-block;
-}
-
-/* Accordion */
-.accordion {
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #ddd;
-}
-
-.panel {
-    padding: 0 18px;
-    display: none;
-    background-color: var(--bg-color);
-    overflow: hidden;
-}
-
-footer { text-align: center; padding: 2rem; background: var(--primary-color); color: white; }
+/* ANIMAÇÕES */
+.reveal { opacity: 0; transform: translateY(40px); transition: 1s all ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
