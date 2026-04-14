@@ -3,89 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesozoica: A Epopeia dos Gigantes | Explorando o Passado</title>
+    <title>Era Mesozoica | Explorando o Passado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 
     <header>
         <div class="container header-content">
-            <div class="logo">
-                <span class="logo-icon">🦖</span>
-                <h1>Mesozoica</h1>
-            </div>
+            <h1>Mesozoica<span>Era</span></h1>
             <nav aria-label="Navegação Principal">
                 <ul class="nav-links">
-                    <li><a href="#periodos">Eras</a></li>
-                    <li><a href="#galeria">Predadores</a></li>
-                    <li><a href="#curiosidades">FAQ</a></li>
+                    <li><a href="#periodos">Períodos</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#curiosidades">Curiosidades</a></li>
                 </ul>
             </nav>
             <div class="accessibility-controls" role="group" aria-label="Controles de Acessibilidade">
-                <button id="contrast-toggle" title="Alto Contraste">◐</button>
-                <button id="font-decrease" title="Diminuir Texto">A-</button>
-                <button id="font-increase" title="Aumentar Texto">A+</button>
+                <button id="contrast-toggle" aria-label="Alternar Alto Contraste">◐</button>
+                <button id="font-decrease" aria-label="Diminuir Fonte">A-</button>
+                <button id="font-increase" aria-label="Aumentar Fonte">A+</button>
             </div>
         </div>
     </header>
 
     <main id="main-content">
         <section class="hero scroll-reveal">
-            <div class="hero-overlay"></div>
-            <div class="container hero-body">
-                <span class="badge">Há 252 milhões de anos</span>
-                <h2>O Mundo Pertencia a Eles.</h2>
-                <p>Uma jornada pelas profundezas do tempo, onde a Terra respirava fogo e os gigantes caminhavam sob florestas ancestrais.</p>
-                <a href="#periodos" class="btn-primary">Iniciar Exploração</a>
+            <div class="container">
+                <h2>A Idade dos Répteis</h2>
+                <p>Descubra o mundo dominado pelos dinossauros, desde o Triássico até a grande extinção no Cretáceo.</p>
             </div>
         </section>
 
         <section id="periodos" class="section container scroll-reveal">
-            <div class="section-header">
-                <h2>A Linha do Tempo</h2>
-                <p>O Mesozoico dividiu-se em três atos dramáticos de evolução e mudança geológica.</p>
-            </div>
+            <h2>Os Três Períodos</h2>
             <div id="periods-grid" class="grid-layout">
                 </div>
         </section>
 
-        <section id="galeria" class="section dark-bg scroll-reveal">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Titãs Dominantes</h2>
-                    <p>Conheça as feras que definiram o topo da cadeia alimentar.</p>
+        <section id="galeria" class="section container scroll-reveal">
+            <h2>Gigantes Mesozoicos</h2>
+            <div class="carousel" role="region" aria-label="Carrossel de Dinossauros">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track" id="carousel-list">
+                        </ul>
                 </div>
-                <div class="carousel" role="region" aria-roledescription="carousel">
-                    <div class="carousel-track-container">
-                        <ul class="carousel-track" id="carousel-list">
-                            </ul>
-                    </div>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev" aria-label="Slide anterior">❮</button>
-                        <button class="carousel-btn next" aria-label="Próximo slide">❯</button>
-                    </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" aria-label="Anterior">❮</button>
+                    <button class="carousel-btn next" aria-label="Próximo">❯</button>
                 </div>
             </div>
         </section>
 
         <section id="curiosidades" class="section container scroll-reveal">
-            <div class="section-header">
-                <h2>Segredos dos Fósseis</h2>
-                <p>Respostas para as dúvidas mais intrigantes sobre a era dos répteis.</p>
-            </div>
+            <h2>Curiosidades Frequentes</h2>
             <div id="faq-accordion" class="accordion">
                 </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <h3>Mesozoica Pro</h3>
-                <p>Educação e paleontologia com acessibilidade para todos.</p>
-            </div>
-            <p class="copyright">&copy; 2026 Museu Virtual Mesozoico. Todos os direitos reservados.</p>
+        <div class="container">
+            <p>&copy; 2026 Portal Paleontológico. Desenvolvido com foco em acessibilidade.</p>
         </div>
     </footer>
 
