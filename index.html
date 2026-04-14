@@ -3,94 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MesozoicaEra - Portal Paleontológico</title>
+    <title>Era Mesozoica | Explorando o Passado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
     <header>
-        <nav id="navbar">
-            <div class="logo">Mesozoica<span>Era</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#periodos">Períodos</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#curiosidades">Curiosidades</a></li>
-            </ul>
-            <div class="accessibility-controls">
-                <button id="toggle-dark-mode" aria-label="Alternar modo escuro">◐</button>
-                <button onclick="changeFontSize(-1)" aria-label="Diminuir fonte">A-</button>
-                <button onclick="changeFontSize(1)" aria-label="Aumentar fonte">A+</button>
+        <div class="container header-content">
+            <h1>Mesozoica<span>Era</span></h1>
+            <nav aria-label="Navegação Principal">
+                <ul class="nav-links">
+                    <li><a href="#periodos">Períodos</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#curiosidades">Curiosidades</a></li>
+                </ul>
+            </nav>
+            <div class="accessibility-controls" role="group" aria-label="Controles de Acessibilidade">
+                <button id="contrast-toggle" aria-label="Alternar Alto Contraste">◐</button>
+                <button id="font-decrease" aria-label="Diminuir Fonte">A-</button>
+                <button id="font-increase" aria-label="Aumentar Fonte">A+</button>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main id="main-content">
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>A Idade dos Répteis</h1>
-                <p>Explore a era onde gigantes caminharam sobre a Terra, desde o surgimento dos primeiros dinossauros até a grande extinção.</p>
-                <a href="#periodos" class="btn-primary">Iniciar Jornada</a>
+        <section class="hero scroll-reveal">
+            <div class="container">
+                <h2>A Idade dos Répteis</h2>
+                <p>Descubra o mundo dominado pelos dinossauros, desde o Triássico até a grande extinção no Cretáceo.</p>
             </div>
         </section>
 
-        <section id="periodos">
-            <h2 class="section-title">Os Três Períodos</h2>
-            <div class="grid-container">
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1517922193564-c242091429a9?auto=format&fit=crop&w=400" alt="Ilustração do período Triássico">
-                    <h3>Triássico (252 - 201 Ma)</h3>
-                    <p>O início de tudo. O supercontinente Pangeia começa a se fragmentar. Surgem os primeiros dinossauros e pequenos mamíferos.</p>
-                    <ul>
-                        <li><strong>Clima:</strong> Árido e quente.</li>
-                        <li><strong>Destaque:</strong> Coelophysis.</li>
-                    </ul>
-                </article>
+        <section id="periodos" class="section container scroll-reveal">
+            <h2>Os Três Períodos</h2>
+            <div id="periods-grid" class="grid-layout">
+                </div>
+        </section>
 
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1550747545-c896b5f69df9?auto=format&fit=crop&w=400" alt="Esqueleto de Braquiossauro">
-                    <h3>Jurássico (201 - 145 Ma)</h3>
-                    <p>A "Era de Ouro". O clima torna-se úmido, permitindo florestas exuberantes e o gigantismo dos saurópodes.</p>
-                    <ul>
-                        <li><strong>Clima:</strong> Tropical e úmido.</li>
-                        <li><strong>Destaque:</strong> Brachiosaurus e Stegosaurus.</li>
-                    </ul>
-                </article>
-
-                <article class="card">
-                    <img src="https://images.unsplash.com/photo-1525873102120-7f285871f30e?auto=format&fit=crop&w=400" alt="Tiranossauro Rex">
-                    <h3>Cretáceo (145 - 66 Ma)</h3>
-                    <p>O auge da diversidade. Surgem as flores (angiospermas) e os predadores mais famosos, terminando com o impacto do asteroide.</p>
-                    <ul>
-                        <li><strong>Clima:</strong> Temperaturas globais elevadas.</li>
-                        <li><strong>Destaque:</strong> T-Rex e Triceratops.</li>
-                    </ul>
-                </article>
+        <section id="galeria" class="section container scroll-reveal">
+            <h2>Gigantes Mesozoicos</h2>
+            <div class="carousel" role="region" aria-label="Carrossel de Dinossauros">
+                <div class="carousel-track-container">
+                    <ul class="carousel-track" id="carousel-list">
+                        </ul>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" aria-label="Anterior">❮</button>
+                    <button class="carousel-btn next" aria-label="Próximo">❯</button>
+                </div>
             </div>
         </section>
 
-        
-
-        <section id="curiosidades" class="bg-light">
-            <h2 class="section-title">Você Sabia?</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="accordion">Por que se chama "Mesozoica"?</button>
-                    <div class="panel">
-                        <p>O nome vem do grego "vida média". É a era intermediária entre a Paleozoica (vida antiga) e a Cenozoica (vida nova).</p>
-                    </div>
+        <section id="curiosidades" class="section container scroll-reveal">
+            <h2>Curiosidades Frequentes</h2>
+            <div id="faq-accordion" class="accordion">
                 </div>
-                <div class="faq-item">
-                    <button class="accordion">O que causou a extinção?</button>
-                    <div class="panel">
-                        <p>A teoria mais aceita é o impacto de um asteroide na península de Yucatán (Cratera de Chicxulub), causando mudanças climáticas drásticas.</p>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Portal Paleontológico. Desenvolvido para Educação Digital.</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Portal Paleontológico. Desenvolvido com foco em acessibilidade.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
