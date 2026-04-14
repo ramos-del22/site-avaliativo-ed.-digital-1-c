@@ -1,139 +1,118 @@
-// Dados Enriquecidos (Onde você edita o conteúdo)
-const mesozoicContent = {
+// Dados para renderização dinâmica
+const mesozoicData = {
     periods: [
-        {
-            title: "Triássico",
-            time: "252 - 201 Ma",
-            image: "https://images.unsplash.com/photo-1550348253-15053724399e?auto=format&fit=crop&q=80&w=600",
-            desc: "A Terra renasce após a extinção Permiana. Surgem os primeiros dinossauros pequenos e ágeis entre vastos desertos."
-        },
-        {
-            title: "Jurássico",
-            time: "201 - 145 Ma",
-            image: "https://images.unsplash.com/photo-1519067736912-e2af30623a69?auto=format&fit=crop&q=80&w=600",
-            desc: "O reinado dos gigantes. Clima úmido, florestas exuberantes e saurópodes colossais que pesavam como prédios."
-        },
-        {
-            title: "Cretáceo",
-            time: "145 - 66 Ma",
-            image: "https://images.unsplash.com/photo-1606856094755-71f8837272a7?auto=format&fit=crop&q=80&w=600",
-            desc: "O ápice da evolução. Surgem as flores e os predadores mais famosos, terminando com o impacto que mudou tudo."
-        }
+        { title: "Triássico", desc: "O surgimento dos primeiros dinossauros e mamíferos.", icon: "🌋" },
+        { title: "Jurássico", desc: "A era dos gigantes. O ápice dos saurópodes.", icon: "🌿" },
+        { title: "Cretáceo", desc: "O florescimento de plantas e a extinção final.", icon: "☄️" }
     ],
-    predators: [
-        { name: "Tiranossauro Rex", role: "Rei do Cretáceo", img: "https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&fit=crop&q=80&w=1000" },
-        { name: "Espinossauro", role: "Predador Aquático", img: "https://images.unsplash.com/photo-1510442650500-93217e634e4c?auto=format&fit=crop&q=80&w=1000" },
-        { name: "Alossauro", role: "Terror do Jurássico", img: "https://images.unsplash.com/photo-1525877442103-5ddb2089b2bb?auto=format&fit=crop&q=80&w=1000" }
-    ],
+    dinosaurs: ["Tiranossauro Rex", "Triceratops", "Braquiossauro", "Velociraptor"],
     faq: [
-        { q: "Os dinossauros tinham penas?", a: "Sim! Descobertas recentes provam que muitos grupos, especialmente os carnívoros menores, possuíam plumagens para isolamento térmico ou exibição." },
-        { q: "Como eles ficaram tão grandes?", a: "A combinação de ossos ocos (pneumatizados), sistemas respiratórios eficientes e abundância de vegetação permitiu o gigantismo único." },
-        { q: "Ainda existem descendentes?", a: "Tecnicamente, sim. As aves modernas são descendentes diretas dos dinossauros terópodes." }
+        { q: "O que causou a extinção?", a: "A teoria mais aceita é o impacto de um asteroide na península de Yucatán." },
+        { q: "Quanto tempo durou a era?", a: "Aproximadamente 180 milhões de anos." }
     ]
 };
 
-// Renderização e Lógica
+// 1. Inicialização e Renderização
 document.addEventListener('DOMContentLoaded', () => {
-    init();
+    renderContent();
+    initCarousel();
+    initAccordion();
+    initScrollReveal();
 });
 
-function init() {
-    renderPeriods();
-    renderCarousel();
-    renderFAQ();
-    setupAccessibility();
-    handleCarousel();
-    setupScrollReveal();
-}
-
-// 1. Renderização de Conteúdo
-function renderPeriods() {
+function renderContent() {
+    // Renderizar Cards de Períodos
     const grid = document.getElementById('periods-grid');
-    grid.innerHTML = mesozoicContent.periods.map(p => `
+    grid.innerHTML = mesozoicData.periods.map(p => `
         <article class="card">
-            <img src="${p.image}" alt="${p.title}" class="card-img">
-            <div class="card-content">
-                <span style="color: var(--secondary); font-weight: bold; font-size: 0.8rem;">${p.time}</span>
-                <h3 style="margin: 10px 0;">${p.title}</h3>
-                <p style="color: var(--text-muted);">${p.desc}</p>
-            </div>
+            <h3>${p.icon} ${p.title}</h3>
+            <p>${p.desc}</p>
         </article>
     `).join('');
-}
 
-function renderCarousel() {
-    const track = document.getElementById('carousel-list');
-    track.innerHTML = mesozoicContent.predators.map(p => `
-        <li class="carousel-item">
-            <img src="${p.img}" alt="${p.name}" class="carousel-img">
-            <div class="carousel-caption container">
-                <h2>${p.name}</h2>
-                <p>${p.role}</p>
-            </div>
-        </li>
+    // Renderizar Carrossel
+    const carouselTrack = document.getElementById('carousel-list');
+    carouselTrack.innerHTML = mesozoicData.dinosaurs.map(dino => `
+        <li class="carousel-item"><h3>${dino}</h3></li>
     `).join('');
-}
 
-function renderFAQ() {
+    // Renderizar Accordion
     const faqContainer = document.getElementById('faq-accordion');
-    faqContainer.innerHTML = mesozoicContent.faq.map((item, i) => `
+    faqContainer.innerHTML = mesozoicData.faq.map((item, index) => `
         <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false" aria-controls="content-${i}">
+            <button class="accordion-header" aria-expanded="false" aria-controls="faq-${index}">
                 ${item.q} <span>+</span>
             </button>
-            <div id="content-${i}" class="accordion-content" style="max-height: 0; overflow: hidden; transition: 0.3s ease;">
-                <p style="padding: 20px; color: var(--text-muted);">${item.a}</p>
+            <div id="faq-${index}" class="accordion-content">
+                <p style="padding: 15px 0;">${item.a}</p>
             </div>
         </div>
     `).join('');
+}
 
-    // Lógica do Acordeão
-    document.querySelectorAll('.accordion-header').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const expanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', !expanded);
-            const content = btn.nextElementSibling;
+// 2. Acessibilidade: Fonte e Contraste
+let currentFontSize = 16;
+const htmlEl = document.documentElement;
+
+document.getElementById('font-increase').addEventListener('click', () => {
+    currentFontSize += 2;
+    htmlEl.style.setProperty('--font-base', currentFontSize + 'px');
+});
+
+document.getElementById('font-decrease').addEventListener('click', () => {
+    if(currentFontSize > 12) {
+        currentFontSize -= 2;
+        htmlEl.style.setProperty('--font-base', currentFontSize + 'px');
+    }
+});
+
+document.getElementById('contrast-toggle').addEventListener('click', () => {
+    document.body.classList.toggle('high-contrast');
+});
+
+// 3. Carrossel Funcional
+function initCarousel() {
+    const track = document.querySelector('.carousel-track');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    let index = 0;
+
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % mesozoicData.dinosaurs.length;
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + mesozoicData.dinosaurs.length) % mesozoicData.dinosaurs.length;
+        updateCarousel();
+    });
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+    }
+}
+
+// 4. Accordion (Expandables)
+function initAccordion() {
+    document.querySelectorAll('.accordion-header').forEach(button => {
+        button.addEventListener('click', () => {
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', !expanded);
+            const content = button.nextElementSibling;
             content.style.maxHeight = expanded ? '0' : content.scrollHeight + 'px';
-            btn.querySelector('span').innerText = expanded ? '+' : '-';
         });
     });
 }
 
-// 2. Acessibilidade
-function setupAccessibility() {
-    let baseSize = 16;
-    const updateSize = (val) => {
-        baseSize += val;
-        document.documentElement.style.setProperty('--font-base', baseSize + 'px');
-    };
-
-    document.getElementById('font-increase').onclick = () => updateSize(2);
-    document.getElementById('font-decrease').onclick = () => baseSize > 12 && updateSize(-2);
-    document.getElementById('contrast-toggle').onclick = () => document.body.classList.toggle('high-contrast');
-}
-
-// 3. Carrossel
-function handleCarousel() {
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const nextBtn = document.querySelector('.next');
-    const prevBtn = document.querySelector('.prev');
-    let current = 0;
-
-    const move = (targetIndex) => {
-        track.style.transform = `translateX(-${targetIndex * 100}%)`;
-        current = targetIndex;
-    };
-
-    nextBtn.onclick = () => move((current + 1) % slides.length);
-    prevBtn.onclick = () => move((current - 1 + slides.length) % slides.length);
-}
-
-// 4. Scroll Reveal
-function setupScrollReveal() {
+// 5. Scroll Reveal com Intersection Observer
+function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => e.isIntersecting && e.target.classList.add('active'));
-    }, { threshold: 0.15 });
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
 
     document.querySelectorAll('.scroll-reveal').forEach(el => {
         el.classList.add('reveal');
