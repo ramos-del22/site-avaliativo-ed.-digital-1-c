@@ -9,7 +9,7 @@
 
 <body>
   <!-- HEADER -->
-  <header role="banner" class="header">
+  <header class="header" role="banner">
     <h1>Guerra Fria</h1>
 
     <nav aria-label="Navegação principal">
@@ -28,27 +28,24 @@
     </div>
   </header>
 
-  <!-- MAIN -->
   <main id="main-content">
 
     <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
-      <h2 id="hero-title">Um conflito ideológico global</h2>
+    <section class="hero">
+      <h2>Um conflito ideológico global</h2>
       <p>Capitalismo vs Socialismo (1947–1991)</p>
     </section>
 
     <!-- SOBRE -->
     <section id="sobre" class="section reveal">
       <h2>O que foi a Guerra Fria?</h2>
-      <article>
-        <p>
-          A Guerra Fria foi um período de tensão política e militar entre os EUA e a URSS,
-          marcado por disputas ideológicas, corrida armamentista e influência global.
-        </p>
-      </article>
+      <p>
+        A Guerra Fria foi um período de tensão política entre Estados Unidos e União Soviética,
+        marcado por disputas ideológicas, corrida armamentista e influência global.
+      </p>
     </section>
 
-    <!-- EVENTOS (dinâmico) -->
+    <!-- EVENTOS -->
     <section id="eventos" class="section reveal">
       <h2>Principais Eventos</h2>
       <div id="event-container" class="grid"></div>
@@ -57,7 +54,7 @@
     <!-- CARROSSEL -->
     <section class="section reveal">
       <h2>Galeria Histórica</h2>
-      <div class="carousel" aria-label="Galeria de imagens">
+      <div class="carousel">
         <button class="prev" onclick="prevSlide()">◀</button>
         <div class="carousel-track" id="carousel-track"></div>
         <button class="next" onclick="nextSlide()">▶</button>
@@ -72,8 +69,7 @@
 
   </main>
 
-  <!-- FOOTER -->
-  <footer role="contentinfo">
+  <footer>
     <p>&copy; 2026 - História Interativa</p>
   </footer>
 
