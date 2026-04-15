@@ -1,14 +1,13 @@
 /* =========================
-   DESIGN SYSTEM (EDITAR AQUI)
+   DESIGN SYSTEM
    ========================= */
 :root {
-  --primary: #1e3a8a;
-  --secondary: #9333ea;
-  --bg: #f9fafb;
-  --text: #111827;
+  --primary: #0f172a;
+  --accent: #3b82f6;
+  --bg: #f1f5f9;
+  --text: #111;
 
-  --spacing: 1rem;
-  --radius: 12px;
+  --radius: 10px;
 }
 
 /* =========================
@@ -16,14 +15,13 @@
    ========================= */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   background: var(--bg);
   color: var(--text);
-  transition: 0.3s;
 }
 
 .section {
-  padding: 2rem 1rem;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -33,34 +31,29 @@ body {
 .header {
   background: var(--primary);
   color: white;
-  text-align: center;
   padding: 1rem;
+  text-align: center;
 }
 
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
+.header nav {
+  margin: 10px;
 }
 
 /* =========================
    HERO
    ========================= */
 .hero {
-  padding: 3rem 1rem;
-  background: linear-gradient(var(--primary), var(--secondary));
+  background: linear-gradient(var(--primary), var(--accent));
   color: white;
+  padding: 3rem;
 }
 
 /* =========================
-   GRID (EDITAR COLUNAS AQUI)
+   GRID
    ========================= */
 .grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
@@ -70,47 +63,56 @@ body {
 }
 
 /* =========================
-   CARDS
+   CARD
    ========================= */
 .card {
   background: white;
   padding: 1rem;
   border-radius: var(--radius);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* =========================
-   CARROSSEL (CORRIGIDO)
+   TIMELINE
+   ========================= */
+#timeline-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+}
+
+.timeline-item {
+  min-width: 200px;
+  background: var(--accent);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+/* =========================
+   CARROSSEL
    ========================= */
 .carousel {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  overflow: hidden;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.4s ease;
+  transition: 0.3s;
 }
 
 .carousel-track img {
   width: 300px;
   height: 200px;
   object-fit: cover;
-  border-radius: var(--radius);
 }
 
 /* =========================
    ACORDEÃO
    ========================= */
-.accordion-item {
-  margin-bottom: 0.5rem;
-}
-
 .accordion-header {
-  background: var(--primary);
+  background: var(--accent);
   color: white;
   padding: 1rem;
   cursor: pointer;
@@ -123,33 +125,11 @@ body {
 }
 
 /* =========================
-   SCROLL REVEAL
-   ========================= */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.6s;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================
    ALTO CONTRASTE
    ========================= */
 .high-contrast {
   --bg: black;
   --text: yellow;
   --primary: yellow;
-  --secondary: white;
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-footer {
-  text-align: center;
-  padding: 1rem;
+  --accent: white;
 }
