@@ -1,5 +1,5 @@
 /* =========================
-   DESIGN SYSTEM (EDITÁVEL)
+   DESIGN SYSTEM (EDITAR AQUI)
    ========================= */
 :root {
   --primary: #1e3a8a;
@@ -12,34 +12,34 @@
 }
 
 /* =========================
-   RESET & BASE
+   BASE
    ========================= */
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   transition: 0.3s;
 }
 
-h1, h2 {
-  margin-bottom: 0.5rem;
+.section {
+  padding: 2rem 1rem;
+  text-align: center;
 }
 
 /* =========================
    HEADER
    ========================= */
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--spacing);
   background: var(--primary);
   color: white;
+  text-align: center;
+  padding: 1rem;
 }
 
 .nav {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   list-style: none;
   padding: 0;
@@ -49,7 +49,6 @@ h1, h2 {
    HERO
    ========================= */
 .hero {
-  text-align: center;
   padding: 3rem 1rem;
   background: linear-gradient(var(--primary), var(--secondary));
   color: white;
@@ -77,20 +76,29 @@ h1, h2 {
   background: white;
   padding: 1rem;
   border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* =========================
-   CARROSSEL
+   CARROSSEL (CORRIGIDO)
    ========================= */
 .carousel {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
 }
 
 .carousel-track img {
   width: 300px;
+  height: 200px;
+  object-fit: cover;
   border-radius: var(--radius);
 }
 
@@ -98,19 +106,20 @@ h1, h2 {
    ACORDEÃO
    ========================= */
 .accordion-item {
-  border-bottom: 1px solid #ccc;
+  margin-bottom: 0.5rem;
 }
 
 .accordion-header {
-  cursor: pointer;
-  padding: 1rem;
   background: var(--primary);
   color: white;
+  padding: 1rem;
+  cursor: pointer;
 }
 
 .accordion-content {
   display: none;
   padding: 1rem;
+  background: white;
 }
 
 /* =========================
@@ -118,7 +127,7 @@ h1, h2 {
    ========================= */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
   transition: 0.6s;
 }
 
