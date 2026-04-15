@@ -2,9 +2,9 @@
    DADOS
    ========================= */
 const events = [
-  { title: "Muro de Berlim", desc: "Divisão da Alemanha (1961)" },
-  { title: "Crise dos Mísseis", desc: "Cuba quase gera guerra nuclear (1962)" },
-  { title: "Corrida Espacial", desc: "Disputa tecnológica entre EUA e URSS" }
+  { title: "Muro de Berlim", year: 1961, type: "politico" },
+  { title: "Crise dos Mísseis", year: 1962, type: "militar" },
+  { title: "Corrida Espacial", year: 1969, type: "tecnologico" }
 ];
 
 const images = [
@@ -14,54 +14,99 @@ const images = [
 ];
 
 const leaders = [
-  { name: "Stalin", info: "Líder da URSS após a Segunda Guerra Mundial." },
-  { name: "Kennedy", info: "Presidente dos EUA durante a crise de Cuba." },
-  { name: "Gorbachev", info: "Responsável por reformas que levaram ao fim da Guerra Fria." }
+  { name: "Stalin", info: "URSS" },
+  { name: "Kennedy", info: "EUA" },
+  { name: "Gorbachev", info: "Fim da Guerra Fria" }
 ];
 
 /* =========================
-   RENDERIZAÇÃO
+   RENDER EVENTOS
    ========================= */
-function renderEvents() {
+function renderEvents(filter = "all") {
   const container = document.getElementById("event-container");
-  if (!container) return;
-
   container.innerHTML = "";
 
-  events.forEach(e => {
-    const card = document.createElement("div");
-    card.classList.add("card");
+  events
+    .filter(e => filter === "all" || e.type === filter)
+    .forEach(e => {
+      const card = document.createElement("div");
+      card.className = "card";
 
-    card.innerHTML = `
-      <h3>${e.title}</h3>
-      <p>${e.desc}</p>
+      card.innerHTML = `
+        <h3>${e.title}</h3>
+        <p>${e.year}</p>
+        <small>${e.type}</small>
+      `;
+
+      container.appendChild(card);
+    });
+}
+
+/* =========================
+   FILTRO
+   ========================= */
+function filterEvents() {
+  const value = document.getElementById("filter").value;
+  renderEvents(value);
+}
+
+/* =========================
+   TIMELINE
+   ========================= */
+function renderTimeline() {
+  const container = document.getElementById("timeline-container");
+
+  events.forEach(e => {
+    const item = document.createElement("div");
+    item.className = "timeline-item";
+
+    item.innerHTML = `
+      <strong>${e.year}</strong>
+      <p>${e.title}</p>
     `;
 
-    container.appendChild(card);
+    container.appendChild(item);
   });
 }
 
+/* =========================
+   CARROSSEL
+   ========================= */
+let index = 0;
+
 function renderCarousel() {
   const track = document.getElementById("carousel-track");
-  if (!track) return;
-
-  track.innerHTML = "";
 
   images.forEach(src => {
     const img = document.createElement("img");
     img.src = src;
-    img.alt = "Imagem histórica";
     track.appendChild(img);
   });
 }
 
+function nextSlide() {
+  index = (index + 1) % images.length;
+  updateSlide();
+}
+
+function prevSlide() {
+  index = (index - 1 + images.length) % images.length;
+  updateSlide();
+}
+
+function updateSlide() {
+  const track = document.getElementById("carousel-track");
+  track.style.transform = `translateX(-${index * 300}px)`;
+}
+
+/* =========================
+   ACORDEÃO
+   ========================= */
 function renderAccordion() {
   const container = document.getElementById("accordion");
-  if (!container) return;
 
   leaders.forEach(l => {
     const item = document.createElement("div");
-    item.classList.add("accordion-item");
 
     item.innerHTML = `
       <div class="accordion-header">${l.name}</div>
@@ -74,32 +119,11 @@ function renderAccordion() {
         document.querySelectorAll(".accordion-content")
           .forEach(c => c.style.display = "none");
 
-        const content = item.querySelector(".accordion-content");
-        content.style.display = "block";
+        item.querySelector(".accordion-content").style.display = "block";
       });
 
     container.appendChild(item);
   });
-}
-
-/* =========================
-   CARROSSEL
-   ========================= */
-let index = 0;
-
-function updateCarousel() {
-  const track = document.getElementById("carousel-track");
-  track.style.transform = `translateX(-${index * 300}px)`;
-}
-
-function nextSlide() {
-  index = (index + 1) % images.length;
-  updateCarousel();
-}
-
-function prevSlide() {
-  index = (index - 1 + images.length) % images.length;
-  updateCarousel();
 }
 
 /* =========================
@@ -113,7 +137,7 @@ function increaseFont() {
 }
 
 function decreaseFont() {
-  fontSize = Math.max(12, fontSize - 2);
+  fontSize -= 2;
   document.body.style.fontSize = fontSize + "px";
 }
 
@@ -122,27 +146,11 @@ function toggleContrast() {
 }
 
 /* =========================
-   SCROLL REVEAL
-   ========================= */
-function revealOnScroll() {
-  const elements = document.querySelectorAll(".reveal");
-
-  elements.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 50) {
-      el.classList.add("active");
-    }
-  });
-}
-
-/* =========================
-   INIT (CORRIGIDO)
+   INIT
    ========================= */
 document.addEventListener("DOMContentLoaded", () => {
   renderEvents();
+  renderTimeline();
   renderCarousel();
   renderAccordion();
-  revealOnScroll();
 });
-
-window.addEventListener("scroll", revealOnScroll);
