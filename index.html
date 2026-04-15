@@ -1,73 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Era Mesozoica | Explorando o Passado</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guerra Fria</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
+
 <body>
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+  <!-- HEADER -->
+  <header role="banner" class="header">
+    <h1>Guerra Fria</h1>
 
-    <header>
-        <div class="container header-content">
-            <h1>Mesozoica<span>Era</span></h1>
-            <nav aria-label="Navegação Principal">
-                <ul class="nav-links">
-                    <li><a href="#periodos">Períodos</a></li>
-                    <li><a href="#galeria">Galeria</a></li>
-                    <li><a href="#curiosidades">Curiosidades</a></li>
-                </ul>
-            </nav>
-            <div class="accessibility-controls" role="group" aria-label="Controles de Acessibilidade">
-                <button id="contrast-toggle" aria-label="Alternar Alto Contraste">◐</button>
-                <button id="font-decrease" aria-label="Diminuir Fonte">A-</button>
-                <button id="font-increase" aria-label="Aumentar Fonte">A+</button>
-            </div>
-        </div>
-    </header>
+    <nav aria-label="Navegação principal">
+      <ul class="nav">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#lideres">Líderes</a></li>
+      </ul>
+    </nav>
 
-    <main id="main-content">
-        <section class="hero scroll-reveal">
-            <div class="container">
-                <h2>A Idade dos Répteis</h2>
-                <p>Descubra o mundo dominado pelos dinossauros, desde o Triássico até a grande extinção no Cretáceo.</p>
-            </div>
-        </section>
+    <!-- Acessibilidade -->
+    <div class="accessibility-controls">
+      <button onclick="increaseFont()">A+</button>
+      <button onclick="decreaseFont()">A-</button>
+      <button onclick="toggleContrast()">Alto Contraste</button>
+    </div>
+  </header>
 
-        <section id="periodos" class="section container scroll-reveal">
-            <h2>Os Três Períodos</h2>
-            <div id="periods-grid" class="grid-layout">
-                </div>
-        </section>
+  <!-- MAIN -->
+  <main id="main-content">
 
-        <section id="galeria" class="section container scroll-reveal">
-            <h2>Gigantes Mesozoicos</h2>
-            <div class="carousel" role="region" aria-label="Carrossel de Dinossauros">
-                <div class="carousel-track-container">
-                    <ul class="carousel-track" id="carousel-list">
-                        </ul>
-                </div>
-                <div class="carousel-nav">
-                    <button class="carousel-btn prev" aria-label="Anterior">❮</button>
-                    <button class="carousel-btn next" aria-label="Próximo">❯</button>
-                </div>
-            </div>
-        </section>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <h2 id="hero-title">Um conflito ideológico global</h2>
+      <p>Capitalismo vs Socialismo (1947–1991)</p>
+    </section>
 
-        <section id="curiosidades" class="section container scroll-reveal">
-            <h2>Curiosidades Frequentes</h2>
-            <div id="faq-accordion" class="accordion">
-                </div>
-        </section>
-    </main>
+    <!-- SOBRE -->
+    <section id="sobre" class="section reveal">
+      <h2>O que foi a Guerra Fria?</h2>
+      <article>
+        <p>
+          A Guerra Fria foi um período de tensão política e militar entre os EUA e a URSS,
+          marcado por disputas ideológicas, corrida armamentista e influência global.
+        </p>
+      </article>
+    </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Portal Paleontológico. Desenvolvido com foco em acessibilidade.</p>
-        </div>
-    </footer>
+    <!-- EVENTOS (dinâmico) -->
+    <section id="eventos" class="section reveal">
+      <h2>Principais Eventos</h2>
+      <div id="event-container" class="grid"></div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- CARROSSEL -->
+    <section class="section reveal">
+      <h2>Galeria Histórica</h2>
+      <div class="carousel" aria-label="Galeria de imagens">
+        <button class="prev" onclick="prevSlide()">◀</button>
+        <div class="carousel-track" id="carousel-track"></div>
+        <button class="next" onclick="nextSlide()">▶</button>
+      </div>
+    </section>
+
+    <!-- ACORDEÃO -->
+    <section id="lideres" class="section reveal">
+      <h2>Líderes Importantes</h2>
+      <div id="accordion"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>&copy; 2026 - História Interativa</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
