@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guerra Fria</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="header" role="banner">
-    <h1>Guerra Fria</h1>
 
-    <nav aria-label="Navegação principal">
-      <ul class="nav">
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#eventos">Eventos</a></li>
-        <li><a href="#lideres">Líderes</a></li>
-      </ul>
-    </nav>
+<header class="header">
+  <h1>Guerra Fria</h1>
 
-    <!-- Acessibilidade -->
-    <div class="accessibility-controls">
-      <button onclick="increaseFont()">A+</button>
-      <button onclick="decreaseFont()">A-</button>
-      <button onclick="toggleContrast()">Alto Contraste</button>
-    </div>
-  </header>
+  <nav>
+    <a href="#timeline">Timeline</a>
+    <a href="#eventos">Eventos</a>
+    <a href="#lideres">Líderes</a>
+  </nav>
 
-  <main id="main-content">
+  <div class="controls">
+    <button onclick="increaseFont()">A+</button>
+    <button onclick="decreaseFont()">A-</button>
+    <button onclick="toggleContrast()">Contraste</button>
+  </div>
+</header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h2>Um conflito ideológico global</h2>
-      <p>Capitalismo vs Socialismo (1947–1991)</p>
-    </section>
+<main>
 
-    <!-- SOBRE -->
-    <section id="sobre" class="section reveal">
-      <h2>O que foi a Guerra Fria?</h2>
-      <p>
-        A Guerra Fria foi um período de tensão política entre Estados Unidos e União Soviética,
-        marcado por disputas ideológicas, corrida armamentista e influência global.
-      </p>
-    </section>
+<!-- HERO -->
+<section class="hero">
+  <h2>Capitalismo vs Socialismo</h2>
+  <p>Uma disputa global sem confronto direto</p>
+</section>
 
-    <!-- EVENTOS -->
-    <section id="eventos" class="section reveal">
-      <h2>Principais Eventos</h2>
-      <div id="event-container" class="grid"></div>
-    </section>
+<!-- TIMELINE -->
+<section id="timeline" class="section">
+  <h2>Linha do Tempo</h2>
+  <div id="timeline-container"></div>
+</section>
 
-    <!-- CARROSSEL -->
-    <section class="section reveal">
-      <h2>Galeria Histórica</h2>
-      <div class="carousel">
-        <button class="prev" onclick="prevSlide()">◀</button>
-        <div class="carousel-track" id="carousel-track"></div>
-        <button class="next" onclick="nextSlide()">▶</button>
-      </div>
-    </section>
+<!-- FILTRO -->
+<section class="section">
+  <h2>Filtrar Eventos</h2>
+  <select id="filter" onchange="filterEvents()">
+    <option value="all">Todos</option>
+    <option value="militar">Militar</option>
+    <option value="politico">Político</option>
+    <option value="tecnologico">Tecnológico</option>
+  </select>
+</section>
 
-    <!-- ACORDEÃO -->
-    <section id="lideres" class="section reveal">
-      <h2>Líderes Importantes</h2>
-      <div id="accordion"></div>
-    </section>
+<!-- EVENTOS -->
+<section id="eventos" class="section">
+  <h2>Eventos</h2>
+  <div id="event-container" class="grid"></div>
+</section>
 
-  </main>
+<!-- CARROSSEL -->
+<section class="section">
+  <h2>Galeria</h2>
+  <div class="carousel">
+    <button onclick="prevSlide()">◀</button>
+    <div id="carousel-track" class="carousel-track"></div>
+    <button onclick="nextSlide()">▶</button>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2026 - História Interativa</p>
-  </footer>
+<!-- ACORDEÃO -->
+<section id="lideres" class="section">
+  <h2>Líderes</h2>
+  <div id="accordion"></div>
+</section>
 
-  <script src="script.js"></script>
+</main>
+
+<footer>
+  <p>Projeto Educacional</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
